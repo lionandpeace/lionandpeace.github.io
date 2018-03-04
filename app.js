@@ -5,6 +5,10 @@ $(document).ready(function(){
 
 })
 
+$('.sound-off').on('click', function(){
+	_f.shouldSound=!_f.shouldSound;
+})
+
 var _f = {
 
 	defaultExtension: 'com',
@@ -13,9 +17,40 @@ var _f = {
 
 	},
 
-	sound: false
+	setCookie: function(cname, cvalue, exdays) {
+	    var d = new Date();
+	    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	    var expires = "expires="+ d.toUTCString();
+	    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	},
+
+	getCookie: function(name){
+		var dc = document.cookie;
+		var prefix = name + "=";
+		var begin = dc.indexOf("; " + prefix);
+		if (begin == -1) {
+			begin = dc.indexOf(prefix);
+			if (begin != 0) return null;
+		}
+		else
+		{
+		begin += 2;
+		var end = document.cookie.indexOf(";", begin);
+		if (end == -1) {
+		end = dc.length;
+		}
+		}
+		// because unescape has been deprecated, replaced with decodeURI
+		//return unescape(dc.substring(begin + prefix.length, end));
+		return decodeURI(dc.substring(begin + prefix.length, end));
+	},
+
+	sound: false,
+
+	shouldSound: true
 
 }
+
 
 $('ul.sects li').on('mouseover', function(e){
 	extension = $(e.target).attr('ext')
@@ -31,13 +66,15 @@ $('ul.sects li').on('mouseover', function(e){
 
 	}
 
-	chordFilename = 'chord'+$(e.target).attr('chord')+'.wav'
+	if(_f.shouldSound){
+		chordFilename = 'chord'+$(e.target).attr('chord')+'.wav'
 
-	_f.sound = new Howl({
-		src: [chordFilename]
-	});
+		_f.sound = new Howl({
+			src: [chordFilename]
+		});
 
-	_f.sound.play();
+		_f.sound.play();
+	}
 
 	/*var sound = new Howl({
 	  src: ['chord 0.wav']
@@ -87,10 +124,24 @@ function changeExtension(extension){
 	}
 }
 
+
+
 function segueToAbout(){
-	_f.defaultExtension = '';
-	$('ul.sects li').css('opacity', 0);
-	$('.name').addClass('about');
+	$('.content').css('opacity', 0);
+	$('.about-me').css('opacity', 1);
+	setTimeout(function(){
+		$('.content').hide();
+	}, 200);
+
+}
+
+function hide(){
+	$('.content').css('opacity', 1);
+	$('.about-me').css('opacity', 0);
+	setTimeout(function(){
+		$('.content').show();
+	}, 200);
+
 }
 
 $('.about').on('click', function(){
