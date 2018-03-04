@@ -67,7 +67,7 @@ $('ul.sects li').on('mouseover', function(e){
 	}
 
 	if(_f.shouldSound){
-		chordFilename = 'chord'+$(e.target).attr('chord')+'.wav'
+		chordFilename = 'chord'+$(e.target).attr('chord')+'.ogg'
 
 		_f.sound = new Howl({
 			src: [chordFilename]
