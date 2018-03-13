@@ -3,6 +3,10 @@ $(document).ready(function(){
 		$('.content').css('opacity', 1);
 	}, 100)
 
+	setTimeout(function(){
+		$('.update').html(update.message + ' <a href="' + update.url + '">' + update.url + '</a>')
+	}, 1000)
+
 })
 
 $('.sound-off').on('click', function(){
