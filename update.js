@@ -1,6 +1,1 @@
-update = {
-
-	"url": "http://lionandpeace.com/hfreeverse1",
-	"message": "new article: 'today are my thoughts, tomorrow is my poetry'"
-
-}
+update = {"url": "http://lionandpeace.com/test2", "message": "this is a test message."}

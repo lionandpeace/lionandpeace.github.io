@@ -1,1 +1,0 @@
-update = {"url": "http://lionandpeace.com/test", "message": "this is a test message"}
