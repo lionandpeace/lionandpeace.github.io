@@ -1,0 +1,119 @@
+html, body {
+	margin: 0;
+}
+
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+body {
+	background-color: #1B1921;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	text-align: center;
+	font-weight: 300;
+	color: white;
+	margin: 0;
+	font-family: "Cardo", serif;
+}
+
+h1:before {
+	content: '(';
+}
+
+h1:after {
+	content: ')';
+}
+
+.video {
+	border: 4px solid #D45742;
+    margin: -32px 16px;
+	display: inline-block;
+}
+
+.links {
+	padding: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.links li {
+	list-style-type: none;
+	display: inline-block;
+	padding: 18px;
+	margin: 0 8px;
+	border-radius: 4px;
+	color: rgba(255,255,255,0.9);
+	background-color: #4E495F;
+	transition: 0.2s linear;
+	cursor: pointer;
+}
+
+.header {
+    padding: 24px 0;
+    height: 96px;
+}
+
+.links-sect {
+    height: 96px;
+}
+
+/* from bram.us/2017/06/16/aspect-ratio-in-a-css-are-a-hack/ */
+.aspectratio {
+  position: relative;
+  height: 0;
+  width: calc(100% - 40px);
+}
+
+.aspectratio[data-ratio="16:9"] {
+  padding-top: calc(56.25% - 20px);
+}
+
+.aspectratio[data-ratio="4:3"] {
+  padding-top: 75%;
+}
+
+.aspectratio > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* this is me again */
+
+.links li i {
+	font-size: 24px;
+}
+
+.links li.spotify:hover {
+	background-color: #1ED05E;
+}
+
+.links li.applemusic:hover {
+	background-color: #EF6376;
+}
+
+.links li.soundcloud:hover {
+	background-color: #F7610D;
+}
+
+.container {
+	display: flex;
+    height: 100vh;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 1000px;
+    width: 100%;
+}
